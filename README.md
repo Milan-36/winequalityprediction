@@ -106,7 +106,7 @@ Wine-Quality-Prediction-1.0.ja               100% 6397    87.1KB/s   00:00
 2. Move to the location where EC2 key pair is stored using `cd` command.
 3. To establish a connection to the master node, type the following command in terminal to launch the cluster.
     `ssh -i milan_aws_key_pair.pem hadoop@ec2-54-198-81-15.compute-1.amazonaws.com`
-3. Type yes to dismiss the security warning.
+4. Type yes to dismiss the security warning.
 
 
 ### 3.4) Put Files in Hadoop Distributed file system
@@ -212,10 +212,25 @@ only showing top 20 rows
 ```
 
 
-### 3.7) Docker
+
+### 3.7) Run the wine quality prediction ML model with Docker:
 
 [Docker Container](https://hub.docker.com/repository/docker/milankumarpatel/winequalityprediction)
 
+Following following steps to run the wine quality prediction ML model with Docke for Mac
+1. [Get Docker for Mac](https://docs.docker.com/get-docker/)
+2. OR - Install from the command line using following command:
+	```
+	sudo hdiutil attach Docker.dmg
+	sudo /Volumes/Docker/Docker.app/Contents/MacOS/install
+	sudo hdiutil detach /Volumes/Docker
+	```
+3. Run Following commnad to pull the new docker image of wine quality prediction model: `docker push milankumarpatel/winequalityprediction:tagname`
+4. Run Follwoing command to run using Docker:
+
+	```
+	docker run --network winequalityprediction /Users/milanpatel/eclipse-workspace/winequalityprediction/data/ValidationDataset.csv:/usr/src/app/data/ValidationDataset.csv --link spark-master:spark-master milankumarpatel/winequalityprediction --name winequalityprediction-docker 
+	```
  
 ## 4. References
 - [Canvas Link for Programming Assignment 2](https://njit.instructure.com/courses/25333/assignments/256386?module_item_id=867582)
