@@ -218,7 +218,7 @@ only showing top 20 rows
 [Docker Container](https://hub.docker.com/repository/docker/milankumarpatel/winequalityprediction)
 
 Following following steps to run the wine quality prediction ML model with Docke for Mac
-1. Install from the command line using following command:
+1. Install from the command line using following command of EC2 Instance:
 	```
 	sudo hdiutil attach Docker.dmg
 	sudo /Volumes/Docker/Docker.app/Contents/MacOS/install
@@ -228,7 +228,7 @@ Following following steps to run the wine quality prediction ML model with Docke
 3. Run Follwoing command to run using Docker:
 
 	```
-	docker run --network winequalityprediction /Users/milanpatel/eclipse-workspace/winequalityprediction/data/ValidationDataset.csv:/usr/src/app/data/ValidationDataset.csv --link spark-master:spark-master milankumarpatel/winequalityprediction --name winequalityprediction-docker 
+	docker run --network winequalityprediction ${pwd}/data/ValidationDataset.csv:/usr/src/app/data/ValidationDataset.csv --link spark-master:spark-master milankumarpatel/winequalityprediction --name winequalityprediction-docker 
 	```
  
 ## 4. References
